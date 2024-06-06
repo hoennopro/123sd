@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Promise Example</title>
+    <script>
+      const myFirstPromise = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("Success!");
+        }, 1000);
+      });
+
+      myFirstPromise
+        .then((message) => {
+          console.log("Result! " + message);
+        })
+        .catch((error) => {
+          console.error("Error: " + error);
+        });
+
+      function runPromiseExample() {
+        console.log("Waiting for the promise to resolve...");
+      }
+
+      window.onload = runPromiseExample;
+    </script>
+  </head>
+  <body>
+    <h1>Promise Example</h1>
+    <p>Mở console của trình duyệt để xem kết quả.</p>
+  </body>
+</html>

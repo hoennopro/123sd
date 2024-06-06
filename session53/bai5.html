@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Kiểm tra số nguyên tố với Promise</title>
+    <script>
+      function isPrimeWithPromise(number) {
+        return new Promise((resolve, reject) => {
+          if (typeof number !== "number" || !Number.isInteger(number)) {
+            return reject("Tham số phải là một số nguyên.");
+          }
+
+          if (number <= 1) {
+            return resolve(false);
+          }
+
+          for (let i = 2; i <= Math.sqrt(number); i++) {
+            if (number % i === 0) {
+              return resolve(false);
+            }
+          }
+
+          return resolve(true);
+        });
+      }
+
+      function checkPrime() {
+        const number = 17;
+        isPrimeWithPromise(number)
+          .then((isPrime) => {
+            if (isPrime) {
+              console.log(number + " là số nguyên tố.");
+            } else {
+              console.log(number + " không phải là số nguyên tố.");
+            }
+          })
+          .catch((error) => {
+            console.error("Lỗi: " + error);
+          });
+      }
+
+      window.onload = checkPrime;
+    </script>
+  </head>
+  <body>
+    <h1>Kiểm tra số nguyên tố với Promise</h1>
+    <p>Mở console của trình duyệt để xem kết quả.</p>
+  </body>
+</html>

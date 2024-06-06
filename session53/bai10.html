@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function findElement(array, target) {
+        return new Promise((resolve, reject) => {
+          if (!Array.isArray(array)) {
+            reject("Tham số đầu vào phải là một mảng.");
+          }
+
+          const foundElement = array.find((element) => element === target);
+
+          if (foundElement !== undefined) {
+            resolve(foundElement);
+          } else {
+            reject("Không tìm thấy phần tử.");
+          }
+        });
+      }
+
+      const inputArray = [1, 2, 3, 4, 5];
+      const targetElement = 3;
+
+      findElement(inputArray, targetElement)
+        .then((foundElement) => {
+          console.log("Phần tử được tìm thấy:", foundElement);
+        })
+        .catch((error) => {
+          console.error("Lỗi:", error);
+        });
+    </script>
+  </body>
+</html>

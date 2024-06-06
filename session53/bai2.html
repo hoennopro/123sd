@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chia số</title>
+    <script>
+      function divideNumbers(num1, num2) {
+        try {
+          if (typeof num1 !== "number" || typeof num2 !== "number") {
+            throw new Error("Cả hai tham số phải là số.");
+          }
+          if (num2 === 0) {
+            throw new Error("Không thể chia cho 0.");
+          }
+          var result = num1 / num2;
+          document.getElementById("result").innerText =
+            "Kết quả của phép chia là: " + result;
+        } catch (error) {
+          document.getElementById("result").innerText = "Lỗi: " + error.message;
+        } finally {
+          console.log("Hàm divideNumbers đã kết thúc.");
+        }
+      }
+
+      function performDivision() {
+        var num1 = parseFloat(document.getElementById("num1").value);
+        var num2 = parseFloat(document.getElementById("num2").value);
+        divideNumbers(num1, num2);
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Chia số</h1>
+    <p>Nhập số thứ nhất: <input type="text" id="num1" /></p>
+    <p>Nhập số thứ hai: <input type="text" id="num2" /></p>
+    <button onclick="performDivision()">Thực hiện phép chia</button>
+    <p id="result"></p>
+  </body>
+</html>

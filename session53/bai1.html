@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tính chỉ số BMI</title>
+    <script>
+      function calculateBMI() {
+        try {
+          var weight = parseFloat(document.getElementById("weight").value);
+          var height = parseFloat(document.getElementById("height").value);
+
+          if (isNaN(weight) || isNaN(height)) {
+            throw "Cân nặng và chiều cao phải là số.";
+          }
+          if (weight <= 0 || height <= 0) {
+            throw "Cân nặng và chiều cao phải lớn hơn 0.";
+          }
+
+          var bmi = weight / (height * height);
+
+          document.getElementById("result").innerText =
+            "Chỉ số BMI của bạn là: " + bmi.toFixed(2);
+        } catch (error) {
+          document.getElementById("result").innerText = "Lỗi: " + error;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Tính chỉ số BMI</h1>
+    <p>Nhập cân nặng (kg): <input type="text" id="weight" /></p>
+    <p>Nhập chiều cao (m): <input type="text" id="height" /></p>
+    <button onclick="calculateBMI()">Tính BMI</button>
+    <p id="result"></p>
+  </body>
+</html>
